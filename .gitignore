@@ -1,0 +1,13 @@
+#### Node modules
+/node_modules
+/client/node_modules
+#.
+
+
+#### Environment variables
+/.env
+#.
+
+
+#### Editor preferences
+/.idea
