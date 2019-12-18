@@ -1,0 +1,14 @@
+@import '../../../../assets/styling/tui-colors.scss';
+
+.navbar {
+  background-color: $tui-prim-blue;
+  color: $tui-prim-dark-blue;
+  &-item {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+.nav-link {
+  color: $tui-prim-dark-blue !important;
+}
