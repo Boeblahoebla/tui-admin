@@ -1,6 +1,7 @@
 @import '../../../../assets/styling/tui-colors.scss';
 
 .navbar {
+  height: 70px;
   background-color: $tui-prim-blue;
   color: $tui-prim-dark-blue;
   &-item {

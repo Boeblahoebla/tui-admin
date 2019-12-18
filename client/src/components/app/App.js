@@ -8,9 +8,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // Components
 import { Navbar } from "../navbar/Navbar";
 import { Admin } from "../admin/Admin";
-import { Login } from "../login/Login";
+import { Login } from "../auth/login/Login.tsx";
 import { UsersList } from "../users-list/UsersList";
-import { Register } from "../register/Register";
+import { Register } from "../auth/register/Register.tsx";
 
 // Styling
 import './assets/styling/App.scss';

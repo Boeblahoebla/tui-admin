@@ -11,6 +11,7 @@ import navLogo from './assets/img/TUI_logo_rgb.png';
 // Styling
 import './assets/styling/navbar.scss';
 
+
 // Navbar component
 ///////////////////
 

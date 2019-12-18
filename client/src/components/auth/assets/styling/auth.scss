@@ -1,0 +1,31 @@
+@import '../../../../assets/styling/tui-colors';
+
+.btn-auth-submit {
+  background-color: $tui-prim-blue-50p;
+  color: $tui-prim-dark-blue;
+  border: 1px solid $tui-prim-dark-blue;
+  &:hover {
+    color: $tui-prim-white;
+    background-color: $tui-prim-dark-blue
+  }
+}
+
+.auth {
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__header {
+    color: $tui-prim-dark-blue;
+  }
+  &__lead {
+    color: $tui-ach-grey
+  }
+  &__icon {
+    color: $tui-prim-blue-25p
+  }
+}
+
+::placeholder {
+  color: $tui-ach-grey !important;
+}
