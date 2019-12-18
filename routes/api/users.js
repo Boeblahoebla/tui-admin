@@ -128,8 +128,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 
-//////////////
-// Exports //
-////////////
+// Exports
+//////////
 
 module.exports = router;

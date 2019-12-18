@@ -1,16 +1,22 @@
 // Imports
 //////////
 
+// Express
 const express = require('express');
-const mongoose = require('mongoose');
-
-const usersRoute = require('./routes/api/users');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const morgan = require('morgan');
-
 const app = express();
 
+// Security
+const passport = require('passport');
+
+// Dabatase related
+const mongoose = require('mongoose');
+
+// API Routes
+const usersRoute = require('./routes/api/users');
+
+// Middleware, utils & logging
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const path = require('path');
 
 
@@ -61,4 +67,4 @@ if(process.env.NODE_ENV === 'production') {
 ////////////////////////
 
 const port = process.env.REACT_APP_NODEPORT || 5000;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${process.env.REACT_APP_NODEPORT}`));
