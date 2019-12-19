@@ -1,6 +1,10 @@
 .spinner {
-  width: 15%;
-  height: 15%;
+  position: absolute;
+  top: calc(50vh - 50px);
+  left: calc(50vw - 50px);
+  width: 100px;
+  height: 100px;
   margin: auto;
   display: block;
+  z-index: 9000;
 }

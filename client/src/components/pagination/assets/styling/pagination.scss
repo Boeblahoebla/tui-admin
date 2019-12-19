@@ -1,0 +1,14 @@
+@import '../../../../assets/styling/tui-colors';
+
+.page-number:hover, .page-item {
+  cursor: pointer;
+}
+
+.page-link {
+  &--passive {
+    background-color: $tui-prim-blue-25p;
+  }
+  &--active {
+    background-color: $tui-prim-blue;
+  }
+}

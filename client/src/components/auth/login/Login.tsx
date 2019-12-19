@@ -2,7 +2,12 @@
 //////////
 
 // Base dependencies
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+
+// Redux
+import { connect } from 'react-redux';
+import { loginUserAction } from "../../../redux/actions/authActions";
 
 // Components
 import { TextFieldGroup } from "../../common/TextFieldGroup";
@@ -10,20 +15,39 @@ import { TextFieldGroup } from "../../common/TextFieldGroup";
 // Styling
 import '../assets/styling/auth.scss';
 
+
 // Login component
 //////////////////
-export const Login = () => {
+const Login = (props:any) => {
 
     // State handling
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
+    // Fetch the history
+    let history = useHistory();
+
     // On submit handler
     const onSubmitHandler = (e: any) => {
         e.preventDefault();
-        console.log('Logging in with the following credentials');
-        console.log(`email: ${email}, password:${password}`);
+
+        // Generate the data to login in with
+        const userLoginData = {
+            email: email,
+            password: password
+        };
+
+        // Fire up the loginUserAction with the given data
+        props.loginUserAction(userLoginData, history);
     };
+
+    // When the user is already authenticated go to the admin page
+    useEffect(() => {
+        if(props.auth.isAuthenticated) {
+            window.location.href="/admin";
+        }
+    }, [props.auth]);
+
 
     return (
         <div className="auth">
@@ -46,6 +70,7 @@ export const Login = () => {
                                 type:"email",
                                 placeholder:"Email address",
                                 value:email,
+                                error: props.error.email,
                                 onChange:(e: any) => setEmail(e.target.value)
                             }}/>
 
@@ -54,10 +79,11 @@ export const Login = () => {
                                 type:"password",
                                 placeholder:"Password",
                                 value:password,
+                                error: props.error.password,
                                 onChange:(e: any) => setPassword(e.target.value)
                             }}/>
 
-                            <input type="submit" value="Submit" className="btn btn-info btn-block btn-auth-submit mt-4"/>
+                            <input type="submit" value="Submit" className="btn btn-block btn-auth-submit mt-4"/>
                         </form>
                     </div>
                 </div>
@@ -65,3 +91,16 @@ export const Login = () => {
         </div>
     );
 };
+
+
+// Map the redux state to props
+const mapStateToProps = (state:any) => ({
+    auth: state.auth,
+    error: state.error
+});
+
+
+// Export
+/////////
+
+export default connect(mapStateToProps, { loginUserAction })(Login)

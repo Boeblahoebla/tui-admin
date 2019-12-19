@@ -12,14 +12,13 @@ import jwtDecode from 'jwt-decode';
 import { FETCH_ERRORS, SET_CURRENT_USER } from './types';
 
 
-
 // Exports
 //////////
 
 // Register User Action
 export const registerUserAction = (userData, history) => dispatch =>{
     axios
-    .post('/api/users/new', userData)
+    .post('/api/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err =>
         dispatch({
@@ -31,7 +30,7 @@ export const registerUserAction = (userData, history) => dispatch =>{
 
 
 // Login user action- Get user token
-export const loginUserAction = userData => dispatch => {
+export const loginUserAction = (userData, history) => dispatch => {
     axios.post('/api/users/login', userData)
     .then(res => {
         // Save to localStorage
@@ -47,7 +46,10 @@ export const loginUserAction = userData => dispatch => {
         const decodedUser = jwtDecode(token);
 
         // Set the current user
-        dispatch(setCurrentUser(decodedUser))
+        dispatch(setCurrentUser(decodedUser));
+
+        // Push to the Admin page
+        history.push('/admin')
     })
     .catch(err =>
         dispatch({
@@ -60,6 +62,9 @@ export const loginUserAction = userData => dispatch => {
 
 // Logout user action
 export const logOutUserAction  = () => dispatch =>{
+
+    console.log('logging out user');
+
     // Remove the token from local storage
     localStorage.removeItem('jwtToken');
 

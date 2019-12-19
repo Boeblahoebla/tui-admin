@@ -12,15 +12,17 @@ import store from '../../redux/redux-store/store';
 import { logOutUserAction, setCurrentUser } from "../../redux/actions/authActions";
 
 // Components
-import { Navbar } from "../navbar/Navbar";
-import { Admin } from "../admin/Admin";
-import { Login } from "../auth/login/Login.tsx";
-import { UsersList } from "../users-list/UsersList";
-import { Register } from "../auth/register/Register.tsx";
+import Navbar from "../navbar/Navbar";
+import Login from "../auth/login/Login.tsx";
+import Register from "../auth/register/Register.tsx";
+import Admin from "../admin/Admin";
+import Users from "../users/Users";
+
 
 // Security
 import jwtDecode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
+import PrivateRoute from '../security/PrivateRoute';
 
 // Styling
 import './assets/styling/App.scss';
@@ -52,8 +54,10 @@ if (localStorage.jwtToken) {
     }
 }
 
+
 // App component
 ////////////////
+
 export function App() {
 
     return (
@@ -64,8 +68,8 @@ export function App() {
                     <Switch>
                         <Route path="/login" component={ Login } />
                         <Route path="/register" component={ Register } />
-                        <Route path="/admin" component={ Admin } />
-                        <Route path="/" component={UsersList} />
+                        <PrivateRoute path="/admin" component={ Admin } />
+                        <Route path="/" component={ Users } />
                     </Switch>
                 </Router>
             </Provider>

@@ -115,6 +115,62 @@ router.post('/login', (req, res) => {
     })
 });
 
+// @route   GET api/users/all
+// @desc    Return current user
+// @access  Public
+router.get('/all', (req, res) => {
+
+    // Get the query parameters
+    const pageNo = parseInt(req.query.pageNo);
+    const size = parseInt(req.query.size);
+
+    // Create the skip & limit fields for use in mongoDb
+    const skip = size * (pageNo - 1);
+
+    // Set the query object for mongoDB
+    const query = {
+        skip: skip,
+        limit: size
+    };
+
+    // initialise an empty errors object & the response
+    let response = {};
+    const errors = {};
+
+    User.countDocuments((err, count) => {
+        // Error handling
+        if (err) {
+            response = {
+                "error": true,
+                "data": "Problem while counting the records"
+            };
+
+            // Return the negative response to the client
+            return res.status(500).json(response);
+        }
+
+        count > 0 &&
+        User.find({}, {}, query)
+            .then(users => {
+                if (!users) {
+                    errors.noProfile = 'There are no client profiles';
+                    return res.status(404).json(errors)
+                }
+
+                response = {
+                    "error": false,
+                    "records": count,
+                    "currentPage": pageNo,
+                    "recordsPerPage": size,
+                    "pages": Math.ceil(count / size),
+                    "data": users
+                };
+                res.status(200).json(response);
+            })
+            .catch(error => res.status(500).json(error))
+    });
+});
+
 
 // @route   GET api/users/current
 // @desc    Return current user

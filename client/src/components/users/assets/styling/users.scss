@@ -1,0 +1,21 @@
+@import '../../../../assets/styling/tui-colors';
+
+.users {
+  &__header {
+    &__title {
+      color: $tui-prim-dark-blue
+    }
+    &__icon {
+      color: $tui-prim-blue-25p
+    }
+  }
+  &__lead {
+    color: $tui-ach-grey
+  }
+  &__table-head {
+    color: $tui-prim-blue
+  }
+  &__table-data {
+    color: $tui-prim-dark-blue
+  }
+}
