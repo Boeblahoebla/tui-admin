@@ -8,7 +8,7 @@ import axios from 'axios';
 // Set the token as header to all requests
 //////////////////////////////////////////
 
-const setAuthToken = token => {
+const setAuthToken = (token:object) => {
     if(token) {
         // Apply to every request
         axios.defaults.headers.common['Authorization'] = token;

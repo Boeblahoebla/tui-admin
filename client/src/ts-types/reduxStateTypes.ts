@@ -38,10 +38,10 @@ export interface reduxFullState {
 
 // reduxMultipleUsersState
 export interface reduxMultipleUserState {
-    error: Boolean;
-    records: Number;
-    currentPage: Number;
-    recordsPerPage: Number;
-    pages: Number;
+    error: boolean;
+    records: number;
+    currentPage: number;
+    recordsPerPage: number;
+    pages: number;
     data: [Object];
 }

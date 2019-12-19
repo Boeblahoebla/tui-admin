@@ -12,15 +12,25 @@ import { connect } from 'react-redux';
 import UserItem from './UserItem';
 
 
+// Typing
+/////////
+
+import { reduxFullState, reduxSingleUserState } from "../../ts-types/reduxStateTypes";
+import { UsersTablePropType } from "./types/UsersTable";
+
+
 // Component
 ////////////
 
-const UsersTable = ({data, auth}) => {
+const UsersTable = (props: UsersTablePropType) => {
+
+    // Fetch data & auth from the props
+    const {data, auth} = props;
 
     // Generate the user items
-    const userItems = data.map(user => (
+    const userItems = data.map((user:reduxSingleUserState, index) => (
         <UserItem
-            key={user._id} email={user.email} userName={user.name}
+            key={index} email={user.email} userName={user.name}
         />
     ));
 
@@ -35,7 +45,8 @@ const UsersTable = ({data, auth}) => {
                         Users list
                     </span>
                 </h1>
-                <p className="lead text-muted mb-4 users__lead">Welcome {auth.user.name}</p>
+
+                {auth && <p className="lead text-muted mb-4 users__lead">Welcome {auth.user.name}</p>}
 
                 <div className="mt-4">
                     <table className="table table-hover">
@@ -59,7 +70,7 @@ const UsersTable = ({data, auth}) => {
 
 
 // Map the Redux state to props
-const mapStateToProps = state => ({
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth
 });
 
