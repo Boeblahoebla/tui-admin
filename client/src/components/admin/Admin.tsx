@@ -10,9 +10,20 @@ import { connect } from 'react-redux';
 // Styling
 import './assets/styling/admin.scss';
 
+
+// Typing
+/////////
+
+import { reduxFullState } from "../../ts-types/reduxStateTypes";
+import { adminPropTypes } from "./types/AdminPropTypes";
+
 // Admin component
 //////////////////
-const Admin = ({auth}) => {
+
+const Admin = (props: adminPropTypes) => {
+
+    // Fetch auth state from the props
+    const { auth } = props;
 
     return (
         <div className="container">
@@ -35,9 +46,13 @@ const Admin = ({auth}) => {
 };
 
 
-const mapStateToProps = state => ({
+// Map the Redux state to props
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth
 });
 
+
+// Export
+/////////
 
 export default connect(mapStateToProps, null)(Admin);

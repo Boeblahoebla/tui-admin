@@ -6,7 +6,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 // Typescript type
-import { textFieldPropTypes } from "../../ts-types/types";
+import { textFieldPropTypes } from "../../ts-types/textFieldPropTypes";
 
 
 // Typing
