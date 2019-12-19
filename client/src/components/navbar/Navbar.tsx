@@ -16,14 +16,23 @@ import navLogo from './assets/img/TUI_logo_rgb.png';
 import './assets/styling/navbar.scss';
 
 
+// Typing
+/////////
+
+import { reduxFullState } from "../../ts-types/reduxStateTypes";
+import { NavbarPropType } from "./types/Navbar";
+
+
 // Navbar component
 ///////////////////
 
-const Navbar = ({ auth, logOutUserAction }) => {
+const Navbar = (props: NavbarPropType) => {
+
+    const { auth, logOutUserAction } = props;
 
     // Determine the links & functionality
-    let links = "";
-    let authFunctionality = "";
+    let links;
+    let authFunctionality;
 
     if(auth.isAuthenticated) {
         links = (
@@ -39,7 +48,7 @@ const Navbar = ({ auth, logOutUserAction }) => {
         authFunctionality = (
             <>
                 <li className="navbar-item d-flex align-items-center">
-                    <Link className="nav-link" to="#" onClick={logOutUserAction}>
+                    <Link className="nav-link" to="#" onClick={() => logOutUserAction()}>
                         Log out <i className="fas fa-sign-out-alt fa-lg ml-2 text-align-center"/>
                     </Link>
                 </li>
@@ -100,7 +109,7 @@ const Navbar = ({ auth, logOutUserAction }) => {
 
 
 // Map the Redux state to props
-const mapStateToProps = state => ({
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth
 });
 
