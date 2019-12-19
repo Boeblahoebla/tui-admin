@@ -5,6 +5,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+// Redux
+import { Provider } from 'react-redux';
+import store from '../../redux/redux-store/store';
+
+import { logOutUserAction, setCurrentUser } from "../../redux/actions/authActions";
+
 // Components
 import { Navbar } from "../navbar/Navbar";
 import { Admin } from "../admin/Admin";
@@ -12,24 +18,57 @@ import { Login } from "../auth/login/Login.tsx";
 import { UsersList } from "../users-list/UsersList";
 import { Register } from "../auth/register/Register.tsx";
 
+// Security
+import jwtDecode from 'jwt-decode';
+import setAuthToken from '../../utils/setAuthToken';
+
 // Styling
 import './assets/styling/App.scss';
 
 
+// Verify validity jwt on app load
+//////////////////////////////////
+
+// Check for token
+if (localStorage.jwtToken) {
+    // Set the token as standard header for requests
+    setAuthToken(localStorage.jwtToken);
+
+    // Decode the token & get user info
+    const decodedUser = jwtDecode(localStorage.jwtToken);
+
+    // Set the current user & isAuthenticated
+    store.dispatch(setCurrentUser(decodedUser));
+
+    // Check for expired token
+    const currentTime = Date.now() / 1000;
+    if (decodedUser.exp < currentTime) {
+
+        // Start the logOutUserAction from the store
+        store.dispatch(logOutUserAction());
+
+        // Redirect to the login page if token is expired
+        window.location.href = "/login";
+    }
+}
+
 // App component
 ////////////////
 export function App() {
+
     return (
         <div className="App">
-            <Router>
-                <Navbar />
-                <Switch>
-                    <Route path="/login" component={ Login } />
-                    <Route path="/register" component={ Register } />
-                    <Route path="/admin" component={ Admin } />
-                    <Route path="/" component={UsersList} />
-                </Switch>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <Navbar />
+                    <Switch>
+                        <Route path="/login" component={ Login } />
+                        <Route path="/register" component={ Register } />
+                        <Route path="/admin" component={ Admin } />
+                        <Route path="/" component={UsersList} />
+                    </Switch>
+                </Router>
+            </Provider>
         </div>
     );
 }
