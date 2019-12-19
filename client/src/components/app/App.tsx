@@ -13,8 +13,8 @@ import { logOutUserAction, setCurrentUser } from "../../redux/actions/authAction
 
 // Components
 import Navbar from "../navbar/Navbar";
-import Login from "../auth/login/Login.tsx";
-import Register from "../auth/register/Register.tsx";
+import Login from "../auth/login/Login";
+import Register from "../auth/register/Register";
 import Admin from "../admin/Admin";
 import Users from "../users/Users";
 
@@ -28,6 +28,11 @@ import PrivateRoute from '../security/PrivateRoute';
 import './assets/styling/App.scss';
 
 
+// Typing
+/////////
+
+import { DecodedUserType } from "./types/AppTypes";
+
 // Verify validity jwt on app load
 //////////////////////////////////
 
@@ -37,7 +42,9 @@ if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
 
     // Decode the token & get user info
-    const decodedUser = jwtDecode(localStorage.jwtToken);
+    const decodedUser:DecodedUserType = jwtDecode(localStorage.jwtToken);
+
+    console.log(decodedUser);
 
     // Set the current user & isAuthenticated
     store.dispatch(setCurrentUser(decodedUser));
