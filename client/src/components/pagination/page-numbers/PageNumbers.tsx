@@ -3,21 +3,29 @@
 
 // Base dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
 import PageNumberItem from './PageNumberItem';
 import PageNumberDots from './PageNumberDots';
 
 
+// Typing
+/////////
+
+import {PageNumbersPropType} from "./types/PageNumbersTypes";
+
+
 // Component
 ////////////
 
-const PageNumbers = ({pages, currentPage, selectPage}) => {
+const PageNumbers = (props: PageNumbersPropType) => {
+
+    // Fetch the # pages, currentPage & selectPage function from the props
+    const { pages, currentPage, selectPage } = props;
 
     // Loop through the pages & create the page numbers
     // Redesign the page numbers according to the current page
-    let numbersLayout = '';
+    let numbersLayout = <></>;
 
     // Functionality to generate a short list
     const generateShortList = () => {
@@ -112,14 +120,6 @@ const PageNumbers = ({pages, currentPage, selectPage}) => {
             </nav>
         </div>
     )
-};
-
-
-// Prop types for the component
-PageNumbers.propTypes = {
-    pages: PropTypes.number.isRequired,
-    currentPage: PropTypes.number.isRequired,
-    selectPage: PropTypes.func.isRequired
 };
 
 

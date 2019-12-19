@@ -12,12 +12,21 @@ import PageControls from "./page-controls/PageControls";
 // Styling
 import './assets/styling/pagination.scss';
 
+
+// Typing
+/////////
+
+import {PaginationPropType} from "./types/PaginationTypes";
+
+
 // Component
 ////////////
 
-const Pagination = ({ data, decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage }) => {
+const Pagination = (props: PaginationPropType) => {
 
-    let paginationContent = '';
+    const { data, decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage } = props
+
+    let paginationContent = <></>;
 
     // Hide the controls when there is no data
     if (!data.data) {

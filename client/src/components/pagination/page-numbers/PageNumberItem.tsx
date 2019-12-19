@@ -3,15 +3,23 @@
 
 // Base dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
+
+
+// Typing
+/////////
+
+import { PageNumberItemPropType } from "./types/PageNumberItemTypes";
+
 
 // Component
 ////////////
 
-const PageNumberItem = ({pageNumber, active, selectPage}) => {
+const PageNumberItem = (props: PageNumberItemPropType) => {
+
+    const {pageNumber, active, selectPage} = props;
 
     // Generate the listItem as active or not
-    let listItem = '';
+    let listItem;
 
     // Format the page number correctly
     let pageNumberText;
@@ -37,11 +45,6 @@ const PageNumberItem = ({pageNumber, active, selectPage}) => {
     )
 };
 
-
-PageNumberItem.propTypes = {
-    pageNumber: PropTypes.number.isRequired,
-    active: PropTypes.bool.isRequired,
-};
 
 // Export
 /////////

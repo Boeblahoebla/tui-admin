@@ -5,13 +5,22 @@
 import React, {useRef} from 'react';
 
 
+// Typing
+/////////
+
+import {PageControlSearchPropType} from "./types/PageControlSearchTypes";
+
+
 // Component
 ////////////
 
-const PageControlSearch = ({selectPage}) => {
+const PageControlSearch = (props: PageControlSearchPropType) => {
+
+    // Fetch the selectPage function from the props
+    const { selectPage } = props;
 
     // Issue an empty reference
-    const inputEl = useRef(null);
+    const inputEl:any = useRef(null);
 
     /******************
      * Event handlers *
@@ -19,12 +28,15 @@ const PageControlSearch = ({selectPage}) => {
 
     // On search click handler
     const onSearchClick = () => {
-        if (inputEl.current.value) {
-            selectPage(inputEl.current.value);
+        if(inputEl) {
+            if (inputEl.current.value) {
+                selectPage(inputEl.current.value);
 
-            // Clear the input value
-            inputEl.current.value = '';
+                // Clear the input value
+                inputEl.current.value = '';
+            }
         }
+
     };
 
     /*************************

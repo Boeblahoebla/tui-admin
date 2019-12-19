@@ -3,17 +3,25 @@
 
 // Base dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
 import PageControlItem from './PageControlItem';
 import PageControlSearch from './PageControlSearch';
 
+// Typing
+/////////
+
+import {PageControlsPropType} from "./types/PageControlsTypes";
+
 
 // Component
 ////////////
 
-const PageControls = ({ decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage }) => {
+const PageControls = (props: PageControlsPropType) => {
+
+    // Fetch the functionality from the props
+    const { decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage } = props;
+
     return (
         <div className="d-flex justify-content-center">
             <nav aria-label="Page navigation">
@@ -30,16 +38,6 @@ const PageControls = ({ decrementPage, incrementPage, setPageEnd, setPageBegin, 
             </nav>
         </div>
     )
-};
-
-
-// Prop types for the component
-PageControls.propTypes = {
-    decrementPage: PropTypes.func.isRequired,
-    incrementPage: PropTypes.func.isRequired,
-    setPageEnd: PropTypes.func.isRequired,
-    setPageBegin: PropTypes.func.isRequired,
-    selectPage: PropTypes.func.isRequired
 };
 
 

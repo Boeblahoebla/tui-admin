@@ -3,7 +3,6 @@
 
 // Base dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
@@ -74,11 +73,6 @@ const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth
 });
 
-
-// Prop types for the component
-UsersTable.propTypes = {
-    data: PropTypes.array.isRequired
-};
 
 
 // Export
