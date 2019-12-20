@@ -5,26 +5,21 @@
 import React from 'react';
 import classnames from 'classnames';
 
-// Typescript type
-import { textFieldPropTypes } from "../../ts-types/textFieldPropTypes";
-
 
 // Typing
 /////////
 
 // Prop types for the textField props
-type textFieldProps = {
-    tfProps: textFieldPropTypes;
-}
+import { TextFieldGroupPropType } from './types/TextFieldGroupTypes'
 
 
 // TextFieldGroup Component
 ///////////////////////////
 
-export const TextFieldGroup = ( props:textFieldProps) => {
+export const TextFieldGroup = (props:TextFieldGroupPropType) => {
 
     // Fetch the fields from the tfProps
-    const { name, placeholder, value, error, info, onChange, type } = props.tfProps;
+    const { name, placeholder, value, error, info, onChange, type } = props;
 
     return (
         <div className="form-group">

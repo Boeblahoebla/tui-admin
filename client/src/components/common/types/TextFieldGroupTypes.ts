@@ -1,5 +1,5 @@
-// textFieldPropTypes
-export type textFieldPropTypes = {
+// textFieldGroupPropType
+export interface TextFieldGroupPropType {
     name: string;
     placeholder: string;
     value: string;

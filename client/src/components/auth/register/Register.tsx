@@ -16,6 +16,12 @@ import { TextFieldGroup } from "../../common/TextFieldGroup";
 import '../assets/styling/auth.scss'
 
 
+// Typing
+/////////
+
+import { RegisterUserDataType } from "../types/AuthTypes";
+
+
 // Register component
 /////////////////////
 const Register = (props:any) => {
@@ -34,7 +40,7 @@ const Register = (props:any) => {
         e.preventDefault();
 
         // Generate the data to register a user with
-        const registerUserData = {
+        const registerUserData:RegisterUserDataType = {
             name: name,
             email: email,
             password: password,
@@ -68,41 +74,41 @@ const Register = (props:any) => {
                         <form noValidate onSubmit={ onSubmitHandler }>
 
                             {/* Input textfields using the TextFieldGroup component */}
-                            <TextFieldGroup tfProps={{
-                                name:"name",
-                                type:"text",
-                                placeholder:"Username",
-                                value: name,
-                                error: props.error.name,
-                                onChange:(e:any) => setName(e.target.value),
-                            }}/>
+                            <TextFieldGroup
+                                name="name"
+                                type="text"
+                                placeholder="Username"
+                                value={ name }
+                                error={ props.error.name }
+                                onChange={ (e:any) => setName(e.target.value) }
+                            />
 
-                            <TextFieldGroup tfProps={{
-                                name:"email",
-                                type:"email",
-                                placeholder:"Email address",
-                                value: email,
-                                error: props.error.email,
-                                onChange:(e:any) => setEmail(e.target.value),
-                            }}/>
+                            <TextFieldGroup
+                                name="email"
+                                type="email"
+                                placeholder="Email address"
+                                value={ email }
+                                error={ props.error.email }
+                                onChange={ (e:any) => setEmail(e.target.value) }
+                            />
 
-                            <TextFieldGroup tfProps={{
-                                name:"password",
-                                type:"password",
-                                placeholder:"Password",
-                                value: password,
-                                error: props.error.password,
-                                onChange:(e:any) => setPassword(e.target.value),
-                            }}/>
+                            <TextFieldGroup
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                value={ password }
+                                error={ props.error.password }
+                                onChange={ (e:any) => setPassword(e.target.value) }
+                            />
 
-                            <TextFieldGroup tfProps={{
-                                name:"password2",
-                                type:"password",
-                                placeholder:"Repeat password",
-                                value: password2,
-                                error: props.error.password2,
-                                onChange:(e:any) => setPassword2(e.target.value),
-                            }}/>
+                            <TextFieldGroup
+                                name="password2"
+                                type="password"
+                                placeholder="Repeat password"
+                                value={ password2 }
+                                error={ props.error.password2 }
+                                onChange={ (e:any) => setPassword2(e.target.value) }
+                            />
 
                             <input type="submit" value="Register" className="btn btn-block btn-auth-submit mt-4"/>
                         </form>
