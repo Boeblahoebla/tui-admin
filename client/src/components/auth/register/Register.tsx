@@ -8,6 +8,7 @@ import { useHistory } from 'react-router';
 // Redux
 import { connect } from 'react-redux';
 import { registerUserAction } from "../../../redux/actions/authActions";
+import { clearErrorsAction } from "../../../redux/actions/errorActions";
 
 // Components
 import { TextFieldGroup } from "../../common/TextFieldGroup";
@@ -60,6 +61,10 @@ const Register = (props:any) => {
         }
     }, [props.auth]);
 
+    // When the component unMounts clear the errors in the Redux state
+    useEffect(() => {
+        return () => props.clearErrorsAction();
+    },[]);
 
     return (
         <div className="auth">
@@ -131,7 +136,7 @@ const mapStateToProps = (state:reduxFullState) => ({
 // Export
 /////////
 
-export default connect(mapStateToProps, { registerUserAction })(Register)
+export default connect(mapStateToProps, { registerUserAction, clearErrorsAction })(Register)
 
 
 

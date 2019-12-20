@@ -8,6 +8,7 @@ import { useHistory } from 'react-router';
 // Redux
 import { connect } from 'react-redux';
 import { loginUserAction } from "../../../redux/actions/authActions";
+import { clearErrorsAction } from '../../../redux/actions/errorActions';
 
 // Components
 import { TextFieldGroup } from "../../common/TextFieldGroup";
@@ -53,6 +54,11 @@ const Login = (props:any) => {
             window.location.href="/admin";
         }
     }, [props.auth]);
+
+    // When the component unMounts clear the errors in the Redux state
+    useEffect(() => {
+        return () => props.clearErrorsAction();
+    },[]);
 
 
     return (
@@ -109,4 +115,4 @@ const mapStateToProps = (state:any) => ({
 // Export
 /////////
 
-export default connect(mapStateToProps, { loginUserAction })(Login)
+export default connect(mapStateToProps, { loginUserAction, clearErrorsAction })(Login)

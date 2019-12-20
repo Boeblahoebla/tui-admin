@@ -1,7 +1,7 @@
 // Imports
 //////////
 
-import { FETCH_ERRORS } from "../../actions/types";
+import {CLEAR_ERRORS, FETCH_ERRORS} from "../../actions/types";
 
 
 // Typing
@@ -22,7 +22,8 @@ const initialErrorState = {};
 export default function(state = initialErrorState, action:ActionType) {
     switch(action.type) {
         case FETCH_ERRORS:
-            console.log(action);
+            return action.payload;
+        case CLEAR_ERRORS:
             return action.payload;
         default:
             return state;
