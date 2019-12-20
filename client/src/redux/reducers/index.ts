@@ -13,8 +13,8 @@ import userReducer from "./user/userReducer";
 // Exports
 //////////
 
-export default combineReducers({
+export default combineReducers<any>({
     auth: authReducer,
     error: errorReducer,
     user: userReducer
-})
+});

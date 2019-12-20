@@ -54,7 +54,7 @@ if (localStorage.jwtToken) {
     if (decodedUser.exp < currentTime) {
 
         // Start the logOutUserAction from the store
-        store.dispatch(logOutUserAction());
+        store.dispatch<any>(logOutUserAction());
 
         // Redirect to the login page if token is expired
         window.location.href = "/login";

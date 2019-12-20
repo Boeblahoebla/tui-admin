@@ -20,6 +20,7 @@ import '../assets/styling/auth.scss'
 /////////
 
 import { RegisterUserDataType } from "../types/AuthTypes";
+import { reduxFullState } from "../../../ts-types/reduxStateTypes";
 
 
 // Register component
@@ -121,7 +122,7 @@ const Register = (props:any) => {
 
 
 // Map the redux state to props
-const mapStateToProps = (state:any) => ({
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth,
     error: state.error
 });

@@ -4,6 +4,12 @@
 import { GET_ALL_USERS, FETCH_ERRORS, USERS_LOADING } from "../../actions/types";
 
 
+// Typing
+/////////
+
+import { ActionType } from "../types/ReducerTypes";
+
+
 // Init Error State
 ////////////////////
 
@@ -17,7 +23,7 @@ const initialUserState = {
 // Exports
 //////////
 
-export default function(state = initialUserState, action) {
+export default function(state = initialUserState, action:ActionType) {
     switch(action.type) {
         case FETCH_ERRORS:
             return action.payload;

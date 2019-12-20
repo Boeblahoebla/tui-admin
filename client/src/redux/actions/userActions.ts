@@ -12,7 +12,7 @@ import { GET_ALL_USERS, USERS_LOADING } from './types';
 //////////
 
 // Register User Action
-export const getAllUsersAction = (page, size) => dispatch => {
+export const getAllUsersAction = (page:number, size:number) => (dispatch:any) => {
 
     // Set users loading
     dispatch(setUsersLoadingAction());

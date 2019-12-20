@@ -12,11 +12,19 @@ import jwtDecode from 'jwt-decode';
 import { FETCH_ERRORS, SET_CURRENT_USER } from './types';
 
 
+// Typing
+/////////
+
+import { DecodedUserType } from "../../components/app/types/AppTypes";
+import { RegisterUserDataType, UserLoginDataType } from "../../components/auth/types/AuthTypes";
+import { HistoryType } from "./types/ActionTypes";
+
+
 // Exports
 //////////
 
 // Register User Action
-export const registerUserAction = (userData, history) => dispatch =>{
+export const registerUserAction = (userData:RegisterUserDataType, history:HistoryType) => (dispatch:any) =>{
     axios
     .post('/api/users/register', userData)
     .then(res => history.push('/login'))
@@ -30,7 +38,7 @@ export const registerUserAction = (userData, history) => dispatch =>{
 
 
 // Login user action- Get user token
-export const loginUserAction = (userData, history) => dispatch => {
+export const loginUserAction = (userData:UserLoginDataType, history:HistoryType) => (dispatch:any) => {
     axios.post('/api/users/login', userData)
     .then(res => {
         // Save to localStorage
@@ -43,7 +51,7 @@ export const loginUserAction = (userData, history) => dispatch => {
         setAuthToken(token);
 
         // Decode the token to get the user data
-        const decodedUser = jwtDecode(token);
+        const decodedUser:DecodedUserType = jwtDecode(token);
 
         // Set the current user
         dispatch(setCurrentUser(decodedUser));
@@ -61,7 +69,7 @@ export const loginUserAction = (userData, history) => dispatch => {
 
 
 // Logout user action
-export const logOutUserAction  = () => dispatch =>{
+export const logOutUserAction  = () => (dispatch:any) =>{
 
     console.log('logging out user');
 
@@ -69,7 +77,7 @@ export const logOutUserAction  = () => dispatch =>{
     localStorage.removeItem('jwtToken');
 
     // Remove the authHeader for future requests
-    setAuthToken(false);
+    setAuthToken({});
 
     // Set the current user to an empty object which will set isAuthenticated to false
     dispatch(setCurrentUser({}));
@@ -77,7 +85,7 @@ export const logOutUserAction  = () => dispatch =>{
 
 
 // Method to set the current user
-export const setCurrentUser = (decodedUser) => {
+export const setCurrentUser = (decodedUser: {}) => {
     return {
         type: SET_CURRENT_USER,
         payload: decodedUser
