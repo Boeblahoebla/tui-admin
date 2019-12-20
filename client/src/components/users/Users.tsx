@@ -86,13 +86,11 @@ const Users = (props: UsersPropType) => {
     let functionalityContent;
     if(data) {
         dataContent = <UsersTable data={data.data}/>;
-        functionalityContent = data
-            ? (
-                <Pagination data={data} decrementPage={decrementPage} incrementPage={incrementPage}
-                            setPageEnd={setPageEnd} setPageBegin={setPageBegin} selectPage={selectPage}
-                />
-            )
-            : <Spinner/>
+        functionalityContent =
+            <Pagination data={data} decrementPage={decrementPage} incrementPage={incrementPage}
+                        setPageEnd={setPageEnd} setPageBegin={setPageBegin} selectPage={selectPage}
+            />
+
     }
     else { dataContent = ""; }
 
@@ -100,6 +98,8 @@ const Users = (props: UsersPropType) => {
     return (
         <div className="container">
             {dataContent}
+
+            {user.loading && <Spinner/>}
 
             {/* When the data is still loading show a spinner, else show the content */}
             {functionalityContent}
