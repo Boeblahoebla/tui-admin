@@ -14,4 +14,5 @@ export interface UserAdminItemPropType {
     id: String | undefined;
     deleteUserAction: Function;
     auth: reduxFullAuthState;
+    clearErrorsAction: Function;
 }

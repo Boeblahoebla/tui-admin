@@ -18,6 +18,7 @@ const passport = require('passport');
 // Validation
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateUpdateInput = require('../../validation/update');
 
 
 // API requests
@@ -101,7 +102,7 @@ router.post('/login', (req, res) => {
         bcrypt.compare(password, user.password).then(isMatch => {
             if(isMatch) {
                 // Create and return a JSON web token
-                const payload = { id: user.id, name: user.name, avatar: user.avatar };
+                const payload = { id: user.id, name: user.name, avatar: user.avatar, email: user.email };
 
                 // Sign the JWT
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -115,6 +116,8 @@ router.post('/login', (req, res) => {
         })
     })
 });
+
+
 
 // @route   GET api/users/all
 // @desc    Return current user
@@ -173,14 +176,14 @@ router.get('/all', (req, res) => {
 });
 
 
-// @route   DELETE api/users/delete:id
+// @route   DELETE api/users/:id
 // @desc    Deletes a user by id
 // @access  Private
 router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
     // Initialize an empty errors object
     let errors = {};
 
-    // Determine if the logged in user is at least an employee
+    // Determine if logged in user is valid
     User.findById(req.user.id)
         .then(user => {
             if (!user) {
@@ -216,6 +219,44 @@ router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res)
         })
 });
 
+
+// @route   PUT api/users/:id
+// @desc    Updates a user with given id
+// @access  Private
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // Validate the input of the req.body
+    const { errors, isValid } = validateUpdateInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    // Determine if logged in user is valid
+    User.findById(req.user.id)
+        .then(user => {
+            if (!user) {
+                errors.noUser = 'There is no user by that id';
+                return res.status(401).json(errors)
+            }
+
+            // Check to see if the id has been given
+            if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+                errors.noIdGiven = "Given id is invalid";
+                return res.status(400).json(errors)
+            }
+
+            let updateFields = {};
+            if (req.body.name) updateFields.name = req.body.name;
+
+                // Update the user
+                User.findOneAndUpdate({_id: req.params.id}, {$set: updateFields}, {new: true})
+                    .then(user => {
+                        console.log(user);
+                        return res.status(200).json(user)
+                    })
+        })
+});
 
 // @route   GET api/users/current
 // @desc    Return current user

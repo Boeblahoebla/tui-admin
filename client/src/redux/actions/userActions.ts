@@ -5,7 +5,16 @@
 import axios from 'axios/index';
 
 // Action types
-import { GET_ALL_USERS, USERS_LOADING, REMOVE_USER_BY_ID  } from './types';
+import { GET_ALL_USERS, USERS_LOADING, REMOVE_USER_BY_ID, FETCH_ERRORS } from './types';
+
+
+// Typing
+/////////
+
+import { HistoryType } from "./types/ActionTypes";
+interface userUpdateData {
+    name: string;
+}
 
 
 // Variables
@@ -13,6 +22,7 @@ import { GET_ALL_USERS, USERS_LOADING, REMOVE_USER_BY_ID  } from './types';
 
 let pageNumber = 0;
 let sizeNumber = 0;
+
 
 // Exports
 //////////
@@ -39,7 +49,24 @@ export const getAllUsersAction = (page:number, size:number) => (dispatch:any) =>
         }))
 };
 
+// Update user action
+export const updateUserAction = (id:string, name:userUpdateData, history:HistoryType) => (dispatch:any) => {
+    axios
+        .put(`/api/users/${id}`, name)
+        .then(res => {
+            console.log('success');
+            dispatch(getAllUsersAction(pageNumber, sizeNumber));
+            history.push('/admin')
+        })
+        .catch(err =>
+            dispatch({
+                type: FETCH_ERRORS,
+                payload: err.response.data
+            })
+        )
+};
 
+// Delete user action
 export const deleteUserAction = (id:string) => (dispatch:any) => {
 
     // Set users loading
@@ -56,7 +83,7 @@ export const deleteUserAction = (id:string) => (dispatch:any) => {
 
             dispatch(getAllUsersAction(pageNumber, sizeNumber))
         })
-        .catch(error => dispatch(getAllUsersAction(1, 5)))
+        .catch(error => dispatch(getAllUsersAction(pageNumber, sizeNumber)))
 };
 
 
