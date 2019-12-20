@@ -2,15 +2,15 @@
 //////////
 
 // Base dependencies
-import React from 'react';
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 
 // Typing
 /////////
 
 // Prop types for the textField props
-import { TextFieldGroupPropType } from './types/TextFieldGroupTypes'
+import { TextFieldGroupPropType } from "./types/TextFieldGroupTypes"
 
 
 // TextFieldGroup Component
@@ -29,11 +29,11 @@ export const TextFieldGroup = (props:TextFieldGroupPropType) => {
                 className={ classnames('form-control form-control-lg form-control-auth', {
                     'is-invalid': error
                 }) }
-                placeholder={ placeholder }
-                name={ name }
-                type={ type }
-                onChange={ onChange }
-                value={ value }
+                placeholder={placeholder}
+                name={name}
+                type={type}
+                onChange={onChange}
+                value={value}
             />
 
             { info && (<small className="form-text text-muted">{ info }</small>) }

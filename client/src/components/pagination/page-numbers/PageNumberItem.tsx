@@ -2,7 +2,7 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 
 // Typing
@@ -16,7 +16,7 @@ import { PageNumberItemPropType } from "./types/PageNumberItemTypes";
 
 const PageNumberItem = (props: PageNumberItemPropType) => {
 
-    const {pageNumber, active, selectPage} = props;
+    const { pageNumber, active, selectPage } = props;
 
     // Generate the listItem as active or not
     let listItem;
@@ -39,7 +39,7 @@ const PageNumberItem = (props: PageNumberItemPropType) => {
 
     return (
         <div>
-            {listItem}
+            { listItem }
         </div>
 
     )

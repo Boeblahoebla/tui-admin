@@ -2,10 +2,10 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 // Components
-import UserItem from './UserItem';
+import UserItem from "./UserItem";
 
 
 // Typing
@@ -48,7 +48,6 @@ const UsersTable = (props: UsersTablePropType) => {
         </div>
     )
 };
-
 
 
 // Export

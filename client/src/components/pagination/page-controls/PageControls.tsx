@@ -2,16 +2,17 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 // Components
-import PageControlItem from './PageControlItem';
-import PageControlSearch from './PageControlSearch';
+import PageControlItem from "./PageControlItem";
+import PageControlSearch from "./PageControlSearch";
+
 
 // Typing
 /////////
 
-import {PageControlsPropType} from "./types/PageControlsTypes";
+import { PageControlsPropType } from "./types/PageControlsTypes";
 
 
 // Component

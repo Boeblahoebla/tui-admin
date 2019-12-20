@@ -2,7 +2,7 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 // Redux
 import { deleteUserAction } from "../../redux/actions/userActions";
@@ -14,7 +14,7 @@ import './assets/styling/admin.scss'
 // Typing
 /////////
 
-import { UserAdminItemPropType } from './types/UserAdminItem';
+import { UserAdminItemPropType } from "./types/UserAdminItem";
 import { reduxFullState } from "../../ts-types/reduxStateTypes";
 
 
@@ -23,12 +23,10 @@ import { reduxFullState } from "../../ts-types/reduxStateTypes";
 
 const UserAdminItem = (props: UserAdminItemPropType) => {
 
-    // Feth userName & email from the props
+    // Fetch userName & email from the props
     const { userName, email, id, deleteUserAction, auth } = props;
 
-    console.log(auth);
-    console.log(id);
-
+    // Generate the removal functionality according to the logged in user
     const removeButton = (auth.user.name === userName)
         ? (
             <button className="btn admin__table-data__remove ml-2 mr-2" disabled>

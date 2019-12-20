@@ -2,11 +2,11 @@
 //////////
 
 // Base dependencies
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { registerUserAction } from "../../../redux/actions/authActions";
 import { clearErrorsAction } from "../../../redux/actions/errorActions";
 
@@ -14,7 +14,7 @@ import { clearErrorsAction } from "../../../redux/actions/errorActions";
 import { TextFieldGroup } from "../../common/TextFieldGroup";
 
 // Styling
-import '../assets/styling/auth.scss'
+import "../assets/styling/auth.scss";
 
 
 // Typing
@@ -26,6 +26,7 @@ import { reduxFullState } from "../../../ts-types/reduxStateTypes";
 
 // Register component
 /////////////////////
+
 const Register = (props:any) => {
 
     // Fetch the clearErrors Redux Action from the props
@@ -56,7 +57,6 @@ const Register = (props:any) => {
         props.registerUserAction(registerUserData, history);
     };
 
-
     // When the user is already authenticated go to the admin page
     useEffect(() => {
         if(props.auth.isAuthenticated) {
@@ -80,43 +80,43 @@ const Register = (props:any) => {
                         <p className="auth__icon text-center mb-4"><i className="far fa-user fa-4x"/></p>
 
                         {/* On submit, fire up the onSubmit method */}
-                        <form noValidate onSubmit={ onSubmitHandler }>
+                        <form noValidate onSubmit={onSubmitHandler}>
 
                             {/* Input textfields using the TextFieldGroup component */}
                             <TextFieldGroup
                                 name="name"
                                 type="text"
                                 placeholder="Username"
-                                value={ name }
-                                error={ props.error.name }
-                                onChange={ (e:any) => setName(e.target.value) }
+                                value={name}
+                                error={props.error.name}
+                                onChange={(e:any) => setName(e.target.value)}
                             />
 
                             <TextFieldGroup
                                 name="email"
                                 type="email"
                                 placeholder="Email address"
-                                value={ email }
-                                error={ props.error.email }
-                                onChange={ (e:any) => setEmail(e.target.value) }
+                                value={email}
+                                error={props.error.email}
+                                onChange={(e:any) => setEmail(e.target.value)}
                             />
 
                             <TextFieldGroup
                                 name="password"
                                 type="password"
                                 placeholder="Password"
-                                value={ password }
-                                error={ props.error.password }
-                                onChange={ (e:any) => setPassword(e.target.value) }
+                                value={password}
+                                error={props.error.password}
+                                onChange={(e:any) => setPassword(e.target.value)}
                             />
 
                             <TextFieldGroup
                                 name="password2"
                                 type="password"
                                 placeholder="Repeat password"
-                                value={ password2 }
-                                error={ props.error.password2 }
-                                onChange={ (e:any) => setPassword2(e.target.value) }
+                                value={password2}
+                                error={props.error.password2}
+                                onChange={(e:any) => setPassword2(e.target.value)}
                             />
 
                             <input type="submit" value="Register" className="btn btn-block btn-auth-submit mt-4"/>

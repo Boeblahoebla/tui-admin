@@ -2,18 +2,17 @@
 //////////
 
 // Base dependencies
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // Components
 import UsersAdminTable from "./UsersAdminTable";
 import Pagination from "../pagination/Pagination";
 
-
 // Styling
-import './assets/styling/admin.scss';
+import "./assets/styling/admin.scss";
 
 
 // Typing
@@ -21,8 +20,9 @@ import './assets/styling/admin.scss';
 
 import { reduxFullState, reduxMultipleUserState } from "../../ts-types/reduxStateTypes";
 import { AdminPropType } from "./types/AdminPropTypes";
-import {Spinner} from "../spinner/Spinner";
-import {getAllUsersAction} from "../../redux/actions/userActions";
+import { Spinner } from "../spinner/Spinner";
+import { getAllUsersAction } from "../../redux/actions/userActions";
+
 
 // Admin component
 //////////////////
@@ -53,11 +53,12 @@ const Admin = (props: AdminPropType) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[user.users]);
 
+
     /******************
      * Event handlers *
      ******************/
 
-        // Decrement page handler
+    // Decrement page handler
     const decrementPage = () => { page > 1 && setPage(page - 1) };
 
     // Increment page handler
@@ -99,14 +100,14 @@ const Admin = (props: AdminPropType) => {
             <div className="row mb-4 mt-4 users">
                 <div className="col-md-12">
                     <h1 className="display-3 admin__header">
-                    <span className="admin__header__icon mr-4">
-                        <i className="fas fa-users-cog"/>
-                    </span>
-                        <span className="admin__header__title">
-                        Administration
-                    </span>
+                        <span className="admin__header__icon mr-4">
+                            <i className="fas fa-users-cog"/>
+                        </span>
+                            <span className="admin__header__title">
+                            Administration
+                        </span>
                     </h1>
-                    <p className="lead text-muted mb-4 users__lead">Welcome {auth.user.name}</p>
+                    <p className="lead text-muted mb-4 users__lead">Welcome { auth.user.name }</p>
 
                     {/* Data content */}
                     { dataContent }
@@ -133,4 +134,4 @@ const mapStateToProps = (state:reduxFullState) => ({
 // Export
 /////////
 
-export default connect(mapStateToProps, {getAllUsersAction})(Admin);
+export default connect(mapStateToProps, { getAllUsersAction })(Admin);

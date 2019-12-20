@@ -2,11 +2,11 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 // Components
-import PageNumberItem from './PageNumberItem';
-import PageNumberDots from './PageNumberDots';
+import PageNumberItem from "./PageNumberItem";
+import PageNumberDots from "./PageNumberDots";
 
 
 // Typing
@@ -37,7 +37,7 @@ const PageNumbers = (props: PageNumbersPropType) => {
 
         numbersLayout = (
             <ul className="pagination ml-auto">
-                {numberItems}
+                { numberItems }
             </ul>
         )
     };
@@ -53,7 +53,7 @@ const PageNumbers = (props: PageNumbersPropType) => {
 
             numbersLayout = (
                 <ul className="pagination ml-auto">
-                    {numberItems}
+                    { numberItems }
                     <PageNumberDots />
                     <PageNumberItem key={pages} pageNumber={pages} active={pages === currentPage} selectPage={selectPage} />
 
@@ -77,9 +77,9 @@ const PageNumbers = (props: PageNumbersPropType) => {
                 <ul className="pagination ml-auto">
                     <PageNumberItem key={1} pageNumber={1} active={currentPage === 1} selectPage={selectPage} />
                     <PageNumberDots />
-                    {middleLeft}
+                    { middleLeft }
                     <PageNumberItem key={currentPage} pageNumber={currentPage} active={true} selectPage={selectPage} />
-                    {middleRight}
+                    { middleRight }
                     <PageNumberDots />
                     <PageNumberItem key={pages} pageNumber={pages} active={pages === currentPage} selectPage={selectPage} />
 
@@ -98,7 +98,7 @@ const PageNumbers = (props: PageNumbersPropType) => {
                 <ul className="pagination ml-auto">
                     <PageNumberItem key={1} pageNumber={1} active={currentPage === 1} selectPage={selectPage} />
                     <PageNumberDots />
-                    {numberItems}
+                    { numberItems }
                 </ul>
             )
         }
@@ -111,12 +111,10 @@ const PageNumbers = (props: PageNumbersPropType) => {
         generateLongList();
     }
 
-
     return (
         <div className="d-flex justify-content-center">
             <nav aria-label="Page navigation">
-                {numbersLayout}
-
+                { numbersLayout }
             </nav>
         </div>
     )

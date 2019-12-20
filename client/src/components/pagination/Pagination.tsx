@@ -2,21 +2,20 @@
 //////////
 
 // Base dependencies
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
 // Components
-import PageNumbers from './page-numbers/PageNumbers';
+import PageNumbers from "./page-numbers/PageNumbers";
 import PageControls from "./page-controls/PageControls";
 
 // Styling
-import './assets/styling/pagination.scss';
+import "./assets/styling/pagination.scss";
 
 
 // Typing
 /////////
 
-import {PaginationPropType} from "./types/PaginationTypes";
+import { PaginationPropType } from "./types/PaginationTypes";
 
 
 // Component
@@ -24,14 +23,16 @@ import {PaginationPropType} from "./types/PaginationTypes";
 
 const Pagination = (props: PaginationPropType) => {
 
-    const { data, decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage } = props
+    // Fetch the properties from the props
+    const { data, decrementPage, incrementPage, setPageEnd, setPageBegin, selectPage } = props;
 
+    // Issue a placeholder for the paginationContent
     let paginationContent = <></>;
 
     // Hide the controls when there is no data
     if (!data.data) {
         return (
-            <div>{paginationContent}</div>
+            <div>{ paginationContent }</div>
         )
     }
 
@@ -54,20 +55,9 @@ const Pagination = (props: PaginationPropType) => {
 
     return (
         <div>
-            {paginationContent}
+            { paginationContent }
         </div>
     )
-};
-
-
-// Prop types for the component
-Pagination.propTypes = {
-    data: PropTypes.object.isRequired,
-    setPageEnd: PropTypes.func.isRequired,
-    setPageBegin: PropTypes.func.isRequired,
-    incrementPage: PropTypes.func.isRequired,
-    decrementPage: PropTypes.func.isRequired,
-    selectPage: PropTypes.func.isRequired
 };
 
 

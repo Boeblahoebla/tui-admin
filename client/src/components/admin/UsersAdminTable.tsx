@@ -2,10 +2,10 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 // Components
-import UserAdminItem from './UserAdminItem';
+import UserAdminItem from "./UserAdminItem";
 
 
 // Typing

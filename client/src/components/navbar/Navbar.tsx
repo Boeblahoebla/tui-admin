@@ -2,18 +2,18 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { logOutUserAction } from "../../redux/actions/authActions";
 
 // Media
-import navLogo from './assets/img/TUI_logo_rgb.png';
+import navLogo from "../../assets/img/TUI_logo_rgb.png";
 
 // Styling
-import './assets/styling/navbar.scss';
+import "./assets/styling/navbar.scss";
 
 
 // Typing
@@ -28,12 +28,14 @@ import { NavbarPropType } from "./types/Navbar";
 
 const Navbar = (props: NavbarPropType) => {
 
+    // Fetch the authentication & the logOutUserAction from the props
     const { auth, logOutUserAction } = props;
 
     // Determine the links & functionality
     let links;
     let authFunctionality;
 
+    // Generate the navbar content according to authentication
     if(auth.isAuthenticated) {
         links = (
             <>
@@ -94,12 +96,12 @@ const Navbar = (props: NavbarPropType) => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <>
                     <ul className="navbar-nav ml-2">
-                        {links}
+                        { links }
                     </ul>
                 </>
                 <div className="ml-auto">
                     <ul className="navbar-nav">
-                        {authFunctionality}
+                        { authFunctionality }
                     </ul>
                 </div>
             </div>

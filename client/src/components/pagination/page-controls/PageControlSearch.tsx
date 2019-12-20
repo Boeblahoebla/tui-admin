@@ -2,13 +2,13 @@
 //////////
 
 // Base dependencies
-import React, {useRef} from 'react';
+import React, { useRef } from "react";
 
 
 // Typing
 /////////
 
-import {PageControlSearchPropType} from "./types/PageControlSearchTypes";
+import { PageControlSearchPropType } from "./types/PageControlSearchTypes";
 
 
 // Component
