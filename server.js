@@ -30,7 +30,7 @@ dotenv.config();
 ////////////////////////
 
 const db = "mongodb+srv://tuiAdmin:Sh6foQvv2YH5yntI@cluster0-pyvmj.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('Problem connecting to mongodb: ', err));
 

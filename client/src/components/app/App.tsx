@@ -24,6 +24,7 @@ import jwtDecode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
 import PrivateRoute from '../security/PrivateRoute';
 
+
 // Styling
 import './assets/styling/App.scss';
 
@@ -43,8 +44,6 @@ if (localStorage.jwtToken) {
 
     // Decode the token & get user info
     const decodedUser:DecodedUserType = jwtDecode(localStorage.jwtToken);
-
-    console.log(decodedUser);
 
     // Set the current user & isAuthenticated
     store.dispatch(setCurrentUser(decodedUser));

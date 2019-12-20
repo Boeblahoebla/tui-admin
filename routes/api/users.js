@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 // Database model
+const mongoose = require( 'mongoose');
 const User = require('../../models/User');
 
 // Security
@@ -169,6 +170,50 @@ router.get('/all', (req, res) => {
             })
             .catch(error => res.status(500).json(error))
     });
+});
+
+
+// @route   DELETE api/users/delete:id
+// @desc    Deletes a user by id
+// @access  Private
+router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+    // Initialize an empty errors object
+    let errors = {};
+
+    // Determine if the logged in user is at least an employee
+    User.findById(req.user.id)
+        .then(user => {
+            if (!user) {
+                errors.noUser = 'There is no user by that id';
+                return res.status(401).json(errors)
+            }
+
+            // Check to see if the id has been given
+            if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+                errors.noIdGiven = "Given id is invalid";
+                return res.status(400).json(errors)
+            }
+
+            // Check to see if the user removes its self
+            if(req.params.id === req.user.id) {
+                errors.removeSelf = "Can not remove yourself";
+                return res.status(400).json(errors)
+            }
+
+            // Find the contact by id & remove it
+            User.findOneAndRemove({_id: req.params.id})
+                .then(contact => {
+                    if (!contact) {
+                        errors.noUsers = "There is no user by that id";
+                        return res.status(404).json(errors)
+                    }
+                    return res.status(200).json(contact)
+                })
+                .catch(error => {
+                    errors.removeFail = "There was a problem removing the user";
+                    res.status(500).json(errors)
+                })
+        })
 });
 
 

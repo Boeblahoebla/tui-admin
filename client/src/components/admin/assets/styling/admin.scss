@@ -3,19 +3,36 @@
 .admin {
   &__header {
     &__title {
-      color: $tui-prim-dark-blue
+      color: $tui-prim-dark-blue;
     }
     &__icon {
-      color: $tui-prim-blue-25p
+      color: $tui-prim-blue-25p;
     }
   }
   &__lead {
-    color: $tui-ach-grey
+    color: $tui-ach-grey;
   }
   &__table-head {
-    color: $tui-prim-blue
+    color: $tui-prim-blue;
   }
   &__table-data {
-    color: $tui-prim-dark-blue
+    color: $tui-prim-dark-blue;
+    &__edit {
+      background-color: $tui-prim-blue-50p;
+      border: 1px solid $tui-prim-blue-25p;
+      color: $tui-prim-dark-blue;
+      &:hover {
+        background-color: $tui-prim-blue;
+      }
+    }
+    &__remove {
+      background-color: $tui-prim-blue-50p;
+      border: 1px solid $tui-prim-blue-25p;
+      color: $tui-prim-dark-blue;
+      &:hover {
+        background-color: $tui-prim-red;
+        color: $tui-prim-white;
+      }
+    }
   }
 }

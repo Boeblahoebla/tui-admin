@@ -28,6 +28,9 @@ import { reduxFullState } from "../../../ts-types/reduxStateTypes";
 /////////////////////
 const Register = (props:any) => {
 
+    // Fetch the clearErrors Redux Action from the props
+    const { clearErrorsAction } = props;
+
     // State handling
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -63,8 +66,8 @@ const Register = (props:any) => {
 
     // When the component unMounts clear the errors in the Redux state
     useEffect(() => {
-        return () => props.clearErrorsAction();
-    },[]);
+        return () => clearErrorsAction()
+    },[clearErrorsAction]);
 
     return (
         <div className="auth">

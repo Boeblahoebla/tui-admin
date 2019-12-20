@@ -1,7 +1,7 @@
 // Imports
 //////////
 
-import {reduxFullUserState} from "../../../ts-types/reduxStateTypes";
+import {reduxFullAuthState, reduxFullUserState} from "../../../ts-types/reduxStateTypes";
 
 
 // Users types
@@ -10,5 +10,6 @@ import {reduxFullUserState} from "../../../ts-types/reduxStateTypes";
 // UsersPropType
 export interface UsersPropType {
     getAllUsersAction: Function;
-    user: reduxFullUserState
+    user: reduxFullUserState,
+    auth: reduxFullAuthState
 }

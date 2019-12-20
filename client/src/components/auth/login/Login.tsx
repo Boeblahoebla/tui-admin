@@ -21,11 +21,15 @@ import '../assets/styling/auth.scss';
 /////////
 
 import { UserLoginDataType } from "../types/AuthTypes";
+import { reduxFullState } from "../../../ts-types/reduxStateTypes";
 
 
 // Login component
 //////////////////
 const Login = (props:any) => {
+
+    // Fetch the clearErrors Redux action from the props
+    const { clearErrorsAction } = props;
 
     // State handling
     const [ email, setEmail ] = useState("");
@@ -57,8 +61,8 @@ const Login = (props:any) => {
 
     // When the component unMounts clear the errors in the Redux state
     useEffect(() => {
-        return () => props.clearErrorsAction();
-    },[]);
+        return () => clearErrorsAction();
+    },[clearErrorsAction]);
 
 
     return (
@@ -106,7 +110,7 @@ const Login = (props:any) => {
 
 
 // Map the redux state to props
-const mapStateToProps = (state:any) => ({
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth,
     error: state.error
 });
