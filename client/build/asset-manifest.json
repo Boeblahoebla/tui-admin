@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.68011451.chunk.css",
+    "main.js": "/static/js/main.fe8dad04.chunk.js",
+    "main.js.map": "/static/js/main.fe8dad04.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1dc66141.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1dc66141.js.map",
+    "static/js/2.9c92283f.chunk.js": "/static/js/2.9c92283f.chunk.js",
+    "static/js/2.9c92283f.chunk.js.map": "/static/js/2.9c92283f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f76169fae4db387f1aad8ba3f9407f37.js": "/precache-manifest.f76169fae4db387f1aad8ba3f9407f37.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.68011451.chunk.css.map": "/static/css/main.68011451.chunk.css.map",
+    "static/js/2.9c92283f.chunk.js.LICENSE": "/static/js/2.9c92283f.chunk.js.LICENSE",
+    "static/media/TUI_logo_rgb.png": "/static/media/TUI_logo_rgb.f45c127c.png",
+    "static/media/spinner.gif": "/static/media/spinner.16f44818.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1dc66141.js",
+    "static/js/2.9c92283f.chunk.js",
+    "static/css/main.68011451.chunk.css",
+    "static/js/main.fe8dad04.chunk.js"
+  ]
+}
