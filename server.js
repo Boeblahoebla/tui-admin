@@ -30,7 +30,7 @@ dotenv.config();
 ////////////////////////
 
 const db = "mongodb+srv://tuiAdmin:Sh6foQvv2YH5yntI@cluster0-pyvmj.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('Problem connecting to mongodb: ', err));
 
@@ -66,5 +66,5 @@ if(process.env.NODE_ENV === 'production') {
 // Server initialisation
 ////////////////////////
 
-const port = process.env.REACT_APP_NODEPORT || 5000;
-app.listen(port, () => console.log(`Listening on port ${process.env.REACT_APP_NODEPORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

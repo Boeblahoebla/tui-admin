@@ -2,30 +2,35 @@
 //////////
 
 // Base dependencies
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { loginUserAction } from "../../../redux/actions/authActions";
-import { clearErrorsAction } from '../../../redux/actions/errorActions';
+import { clearErrorsAction } from "../../../redux/actions/errorActions";
 
 // Components
 import { TextFieldGroup } from "../../common/TextFieldGroup";
 
 // Styling
-import '../assets/styling/auth.scss';
+import "../assets/styling/auth.scss";
 
 
 // Typing
 /////////
 
 import { UserLoginDataType } from "../types/AuthTypes";
+import { reduxFullState } from "../../../ts-types/reduxStateTypes";
 
 
 // Login component
 //////////////////
+
 const Login = (props:any) => {
+
+    // Fetch the clearErrors Redux action from the props
+    const { clearErrorsAction } = props;
 
     // State handling
     const [ email, setEmail ] = useState("");
@@ -57,8 +62,8 @@ const Login = (props:any) => {
 
     // When the component unMounts clear the errors in the Redux state
     useEffect(() => {
-        return () => props.clearErrorsAction();
-    },[]);
+        return () => clearErrorsAction();
+    },[clearErrorsAction]);
 
 
     return (
@@ -81,18 +86,18 @@ const Login = (props:any) => {
                                 name="email"
                                 type="email"
                                 placeholder="Email address"
-                                value={ email }
-                                error= { props.error.email }
-                                onChange={ (e) => setEmail(e.target.value) }
+                                value={email}
+                                error= {props.error.email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
 
                             <TextFieldGroup
                                 name="password"
                                 type="password"
                                 placeholder="Password"
-                                value={ password }
-                                error= { props.error.password }
-                                onChange={ (e: any) => setPassword(e.target.value) }
+                                value={password}
+                                error= {props.error.password}
+                                onChange={(e: any) => setPassword(e.target.value)}
                             />
 
                             <input type="submit" value="Submit" className="btn btn-block btn-auth-submit mt-4"/>
@@ -106,7 +111,7 @@ const Login = (props:any) => {
 
 
 // Map the redux state to props
-const mapStateToProps = (state:any) => ({
+const mapStateToProps = (state:reduxFullState) => ({
     auth: state.auth,
     error: state.error
 });

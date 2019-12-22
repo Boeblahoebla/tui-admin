@@ -7,12 +7,12 @@ import thunk from 'redux-thunk';
 
 // Reducer
 import rootReducer from '../reducers/index';
-
-declare global {
-    interface Window {
-        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-    }
-}
+//
+// declare global {
+//     interface Window {
+//         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//     }
+// }
 
 
 // Redux store
@@ -24,13 +24,13 @@ const initialState = {};
 // Assign the Redux middleware
 const middleware = [thunk];
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 // Create the Redux store for our states
 const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middleware),
-    composeEnhancers()
+    // composeEnhancers()
 ));
 
 

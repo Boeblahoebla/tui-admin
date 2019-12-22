@@ -2,13 +2,13 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 
 // Typing
 /////////
 
-import { UserItemPropType } from './types/UserItem';
+import { UserItemPropType } from "./types/UserItem";
 
 
 // Component
@@ -16,7 +16,7 @@ import { UserItemPropType } from './types/UserItem';
 
 const UserItem = (props: UserItemPropType) => {
 
-    // Feth userName & email from the props
+    // Fetch userName & email from the props
     const { userName, email } = props;
 
     return (

@@ -1,5 +1,15 @@
-import { reduxFullAuthState } from "../../../ts-types/reduxStateTypes";
+// Imports
+//////////
 
-export interface adminPropTypes {
-    auth: reduxFullAuthState
+import {reduxFullAuthState, reduxFullUserState} from "../../../ts-types/reduxStateTypes";
+
+
+// Admin types
+//////////////
+
+// AdminPropType
+export interface AdminPropType {
+    auth: reduxFullAuthState;
+    user: reduxFullUserState;
+    getAllUsersAction: Function;
 }

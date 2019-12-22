@@ -2,13 +2,13 @@
 //////////
 
 // Base dependencies
-import React from 'react';
+import React from "react";
 
 
 // Typing
 /////////
 
-import {PageControlItemPropType} from "./types/PageControlItemTypes";
+import { PageControlItemPropType } from "./types/PageControlItemTypes";
 
 
 // Component
@@ -58,7 +58,7 @@ const PageControlItem = (props: PageControlItemPropType) => {
 
     return (
         <div>
-            {control}
+            { control }
         </div>
     )
 };

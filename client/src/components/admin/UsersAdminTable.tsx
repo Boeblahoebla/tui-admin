@@ -5,28 +5,28 @@
 import React from "react";
 
 // Components
-import UserItem from "./UserItem";
+import UserAdminItem from "./UserAdminItem";
 
 
 // Typing
 /////////
 
 import { reduxSingleUserState } from "../../ts-types/reduxStateTypes";
-import { UsersTablePropType } from "./types/UsersTable";
+import { UsersTablePropType } from "./types/UsersAdminTable";
 
 
 // Component
 ////////////
 
-const UsersTable = (props: UsersTablePropType) => {
+const UsersAdminTable = (props: UsersTablePropType) => {
 
     // Fetch data & auth from the props
     const { data } = props;
 
     // Generate the user items
-    const userItems = data.map((user:reduxSingleUserState, index) => (
-        <UserItem
-            key={index} email={user.email} userName={user.name}
+    const userAdminItems = data.map((user:reduxSingleUserState, index:number) => (
+        <UserAdminItem
+            key={index} email={user.email} userName={user.name} id={user._id}
         />
     ));
 
@@ -38,11 +38,11 @@ const UsersTable = (props: UsersTablePropType) => {
                     {/* Avatar, username & email */}
                     <th className="users__table-head">Avatar</th>
                     <th className="users__table-head">Username</th>
-                    <th className="users__table-head">E-mail</th>
+                    <th className="users__table-head text-center">Functionality</th>
                 </tr>
                 </thead>
                 <tbody>
-                    { userItems }
+                    { userAdminItems }
                 </tbody>
             </table>
         </div>
@@ -50,7 +50,8 @@ const UsersTable = (props: UsersTablePropType) => {
 };
 
 
+
 // Export
 /////////
 
-export default UsersTable;
+export default UsersAdminTable;

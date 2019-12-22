@@ -2,12 +2,12 @@
 //////////
 
 // Base dependencies
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Redux
-import { Provider } from 'react-redux';
-import store from '../../redux/redux-store/store';
+import { Provider } from "react-redux";
+import store from "../../redux/redux-store/store";
 
 import { logOutUserAction, setCurrentUser } from "../../redux/actions/authActions";
 
@@ -18,20 +18,17 @@ import Register from "../auth/register/Register";
 import Admin from "../admin/Admin";
 import Users from "../users/Users";
 
-
 // Security
 import jwtDecode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
 import PrivateRoute from '../security/PrivateRoute';
-
-// Styling
-import './assets/styling/App.scss';
 
 
 // Typing
 /////////
 
 import { DecodedUserType } from "./types/AppTypes";
+
 
 // Verify validity jwt on app load
 //////////////////////////////////
@@ -43,8 +40,6 @@ if (localStorage.jwtToken) {
 
     // Decode the token & get user info
     const decodedUser:DecodedUserType = jwtDecode(localStorage.jwtToken);
-
-    console.log(decodedUser);
 
     // Set the current user & isAuthenticated
     store.dispatch(setCurrentUser(decodedUser));
@@ -73,10 +68,10 @@ export function App() {
                 <Router>
                     <Navbar />
                     <Switch>
-                        <Route path="/login" component={ Login } />
-                        <Route path="/register" component={ Register } />
-                        <PrivateRoute path="/admin" component={ Admin } />
-                        <Route path="/" component={ Users } />
+                        <Route path="/login" component={Login} />
+                        <Route path="/register" component={Register} />
+                        <PrivateRoute path="/admin" component={Admin} />
+                        <Route path="/" component={Users} />
                     </Switch>
                 </Router>
             </Provider>

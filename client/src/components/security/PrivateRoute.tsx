@@ -2,11 +2,11 @@
 //////////
 
 // Base dependencies
-import * as React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import * as React from "react";
+import { Route, Redirect } from "react-router-dom";
 
 // Redux
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 
 // Typing
@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 
 import { reduxFullState } from "../../ts-types/reduxStateTypes";
 import { PrivateRoutePropType } from './types/PrivateRoutePropType'
+
 
 // PrivateRoute component
 /////////////////////////
